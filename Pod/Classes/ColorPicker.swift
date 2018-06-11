@@ -101,7 +101,7 @@ open class ColorPickerListView: UIScrollView {
         }
     }
     
-    func selectColor(_ colorHex: String) {
+    public func selectColor(_ colorHex: String) {
         guard let indexButton = colors.index(of: colorHex) else {
            assertionFailure("Wrong Hex color format for \(colorHex)")
            return
@@ -109,12 +109,12 @@ open class ColorPickerListView: UIScrollView {
         selectButtonAtIndex(indexButton)
     }
     
-    func selectButtonAtIndex(_ index: Int) {
+    public func selectButtonAtIndex(_ index: Int) {
        let button = colorPickerButtons[index]
         selectColorButton(button)
     }
     
-    func selectColorButton(_ colorPickerButton: ColorPickerButton) {
+    @objc func selectColorButton(_ colorPickerButton: ColorPickerButton) {
         let colorPickerButtonIndex = colorPickerButtons.index(of: colorPickerButton)!
         if let selectedButton = self.selectedButton, allowsDeselection && colorPickerButtons.index(of: selectedButton)! ==  colorPickerButtonIndex {
             self.selectedButton = nil
